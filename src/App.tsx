@@ -1,22 +1,19 @@
-import { useRoutes } from 'react-router-dom';
-import router from 'src/router';
+import axios from 'axios';
+import './App.css';
+import { BrowserRouter as Router } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AppRoutes from 'routes/router';
 
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-
-import { CssBaseline } from '@mui/material';
-import ThemeProvider from './theme/ThemeProvider';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 function App() {
-  const content = useRoutes(router);
-
   return (
-    <ThemeProvider>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <CssBaseline />
-        {content}
-      </LocalizationProvider>
-    </ThemeProvider>
+    <Router>
+      <AppRoutes />
+      <ToastContainer />
+    </Router>
   );
 }
+
 export default App;
